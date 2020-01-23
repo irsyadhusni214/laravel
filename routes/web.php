@@ -69,30 +69,68 @@ Route::get('/', function () {
 // });
 
 
-Route::get('tni/{nama?}/{bb?}/{umur?}', function ($a = null, $b = null, $c = null) {
-    $skuy = "Silahkan Isi Terlebih Dahulu";
-    if (isset($a)) {
-        $skuy = 'Nama Anda : ' . $a;
-    }
+// Route::get('tni/{nama?}/{bb?}/{umur?}', function ($a = null, $b = null, $c = null) {
+//     $skuy = "Silahkan Isi Terlebih Dahulu";
+//     if (isset($a)) {
+//         $skuy = 'Nama Anda : ' . $a;
+//     }
 
-    $bb = "<br>Berat Badan Anda: ";
-    if ($b <= 50) {
-        $skuy .= $bb . $b . " (Anda Kurang Nutrisi)";
-    } else if ($b >= 76 || $b >= 100) {
-        $skuy .= $bb . $b . " (Anda Harus Turun Berat Badan)";
-    } else if ($b >= 65 || $b >= 75) {
-        $skuy .= $bb . $b . " (Berat Badan Anda Ideal)";
-    } else if ($b >= 50 || $b >= 64) {
-        $skuy .= $bb . $b . " (Naikan Berat Badan Anda)";
-    }
+//     $bb = "<br>Berat Badan Anda: ";
+//     if ($b <= 50) {
+//         $skuy .= $bb . $b . " (Anda Kurang Nutrisi)";
+//     } else if ($b >= 76 || $b >= 100) {
+//         $skuy .= $bb . $b . " (Anda Harus Turun Berat Badan)";
+//     } else if ($b >= 65 || $b >= 75) {
+//         $skuy .= $bb . $b . " (Berat Badan Anda Ideal)";
+//     } else if ($b >= 50 || $b >= 64) {
+//         $skuy .= $bb . $b . " (Naikan Berat Badan Anda)";
+//     }
 
-    $umr = "<br>Umur Anda: ";
-    if ($c >= 30 && $c <= 40) {
-        $skuy .= $umr . $c . " (Perwira)";
-    } else if ($c >= 40 && $c <= 50) {
-        $skuy .= $umr . $c . " (Laksamana)";
-    } else if ($c >= 50 && $c <= 60) {
-        $skuy .= $umr . $c . " (Jendral)";
-    }
-    return $skuy;
+//     $umr = "<br>Umur Anda: ";
+//     if ($c >= 30 && $c <= 40) {
+//         $skuy .= $umr . $c . " (Perwira)";
+//     } else if ($c >= 40 && $c <= 50) {
+//         $skuy .= $umr . $c . " (Laksamana)";
+//     } else if ($c >= 50 && $c <= 60) {
+//         $skuy .= $umr . $c . " (Jendral)";
+//     }
+//     return $skuy;
+// });
+
+// akses Model Post
+Route::get('testmodel', function () {
+    $query = App\Post::all();
+    return $query;
+});
+
+
+Route::get('testmodel-id', function () {
+    $query = App\Post::find(1);
+    return $query;
+});
+
+Route::get('testmodel-title', function () {
+    $query = App\Post::where('title', 'like', '%cepet nikah%')->get();
+    return $query;
+});
+
+Route::get('testmodel-ubah', function () {
+    $post = App\Post::find(1);
+    $post->title = "Ciri Keluarga Sakinah";
+    $post->save();
+    return $post;
+});
+
+Route::get('testmodel-hapus', function () {
+    $post = App\Post::find(1);
+    $post->delete();
+    return $post;
+});
+
+Route::get('testmodel-tambah', function () {
+    $post = new App\Post;
+    $post->title = "7 Amalan Pembuka Jodoh";
+    $post->content = "shalat malam, sedekah, puasa sunah, silaturahmi, senyum, doa, tobat";
+    $post->save();
+    return $post;
 });
