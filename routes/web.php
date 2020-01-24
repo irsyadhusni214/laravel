@@ -134,3 +134,28 @@ Route::get('testmodel-tambah', function () {
     $post->save();
     return $post;
 });
+
+
+
+Route::get('testdata-pilih3', function () {
+    $query = App\Tugas::all()->take(3);
+    return $query;
+});
+
+Route::get('testdata-select', function () {
+    $query = App\Tugas::select('nama', 'jenis_kelamin', 'sekolah')->first();
+    return $query;
+});
+
+Route::get('testdata/tambah/{nama}/{jenis_kelamin}/{sekolah}/{tgl_lahir}/{hobi}/{umur}/{alamat}', function ($nama, $jenis_kelamin, $sekolah, $tgl_lahir, $hobi, $umur, $alamat) {
+    $post = new App\Tugas;
+    $post->nama = $nama;
+    $post->jenis_kelamin = $jenis_kelamin;
+    $post->sekolah = $sekolah;
+    $post->tgl_lahir = $tgl_lahir;
+    $post->hobi = $hobi;
+    $post->umur = $umur;
+    $post->alamat = $alamat;
+    $post->save();
+    return $post;
+});
