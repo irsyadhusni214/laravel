@@ -137,15 +137,15 @@ Route::get('testmodel-tambah', function () {
 
 
 
-Route::get('testdata-pilih3', function () {
-    $query = App\Tugas::all()->take(3);
-    return $query;
-});
+// Route::get('testdata-pilih3', function () {
+//     $query = App\Tugas::all()->take(3);
+//     return $query;
+// });
 
-Route::get('testdata-select', function () {
-    $query = App\Tugas::select('nama', 'jenis_kelamin', 'sekolah')->first();
-    return $query;
-});
+// Route::get('testdata-select', function () {
+//     $query = App\Tugas::select('nama', 'jenis_kelamin', 'sekolah')->first();
+//     return $query;
+// });
 
 Route::get('testdata/tambah/{nama}/{jenis_kelamin}/{sekolah}/{tgl_lahir}/{hobi}/{umur}/{alamat}', function ($nama, $jenis_kelamin, $sekolah, $tgl_lahir, $hobi, $umur, $alamat) {
     $post = new App\Tugas;
@@ -159,3 +159,16 @@ Route::get('testdata/tambah/{nama}/{jenis_kelamin}/{sekolah}/{tgl_lahir}/{hobi}/
     $post->save();
     return $post;
 });
+
+
+Route::get('tambah/{a?}/{b?}', 'LatihanController@tambah');
+
+Route::get('kurang', 'LatihanController@kurang');
+
+Route::get('bagi', 'LatihanController@bagi');
+
+Route::get('kali', 'LatihanController@kali');
+
+Route::get('data-1', 'LatihanController@loop');
+
+Route::get('karyawan', 'LatihanController@karyawan');
