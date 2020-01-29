@@ -82,10 +82,31 @@ class LatihanController extends Controller
     {
         $data = [
             ['Nama' => 'Hari', 'Agama' => 'Islam', 'Alamat' => 'TCI', 'Jenis_Kelamin' => 'Laki-Laki', 'Jabatan' => 'Manager', 'Jam_Kerja' => 250],
+            ['Nama' => 'Dinda', 'Agama' => 'Islam', 'Alamat' => 'Bojong', 'Jenis_Kelamin' => 'Perempuan', 'Jabatan' => 'Sekretaris', 'Jam_Kerja' => 300],
+            ['Nama' => 'Sukri', 'Agama' => 'Islam', 'Alamat' => 'Mekar Wangi', 'Jenis_Kelamin' => 'Laki-Laki', 'Jabatan' => 'Staff', 'Jam_Kerja' => 250],
         ];
         foreach ($data as $val => $key) {
-            if ($value('Jabatan') == 'Manager') {
+            if ($key['Jabatan'] == 'Manager') {
+                $surs = 5000000;
+            } else if ($key['Jabatan'] == 'Sekretaris') {
+                $surs = 3500000;
+            } else if ($key['Jabatan'] == 'Staff') {
+                $surs = 2500000;
             }
+            $bonus = 0;
         }
+
+        $pp = 0.025 * $surs;
+        $bon = ($surs + $bonus) - $pp;
+        echo "Nama = " . $key['Nama'] .
+            "<br>Agama = " . $key['Agama'] .
+            "<br>Alamat = " . $key['Alamat'] .
+            "<br>Jenis Kelamin = " . $key['Jenis_Kelamin'] .
+            "<br>Jabatan = " . $key['Jabatan'] .
+            "<br>Jam Kerja = " . $key['Jam_Kerja'] .
+            "<br>Gaji = " . $surs .
+            "<br>PPN = " . $pp .
+            "<br>Gaji Bersih = " . $bon;
+        echo "<hr>";
     }
 }
