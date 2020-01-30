@@ -173,8 +173,8 @@ Route::get('data-1', 'LatihanController@loop');
 
 Route::get('karyawan', 'LatihanController@karyawan');
 
-//Crud Tabungan
 
+//Crud Tabungan
 Route::get('tabungan', 'TabunganController@index');
 
 Route::get('tabungan/{id}', 'TabunganController@show');
@@ -188,13 +188,22 @@ Route::get('tabungan-delete/{id}', 'TabunganController@delete');
 
 
 
-
+//costumer
 Route::get('costumer', 'CostumerController@index');
 
 Route::get('costumer/{id}', 'CostumerController@show');
 
-Route::get('costumer-tambah/{nis}/{nama}/{kelas}/{jml}', 'CostumerController@store');
+Route::get('costumer-tambah/{code_customer}/{name}/{email}/{country}/{city}', 'CostumerController@store');
 
 Route::get('costumer-edit/{id?}/{nis?}/{nama?}/{kelas?}/{jml?}', 'CostumerController@edit');
 
 Route::get('costumer-delete/{id}', 'CostumerController@delete');
+
+
+
+//passing
+Route::get('pass', 'PassingController@pass');
+
+Route::get('pass1', 'PassingController@pass1');
+
+Route::get('pass-tabungan', 'PassingController@pass2');
