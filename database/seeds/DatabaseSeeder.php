@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
         // $this->call(SiswaSeeder::class);
         // $this->call(PostsTableSeeder::class);
         // $this->call(DataSeeder::class);
+        $this->call(GameSeeder::class);
         factory(App\Tabungan::class, 100)->create();
         factory(App\Costumer::class, 1000)->create();
     }

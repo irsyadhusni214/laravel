@@ -8,9 +8,24 @@
 </head>
 <body>
     <center>Daftar Tabungan</center>
+
     @foreach($tabungan as $data)
+
+    <?php
+    $jum = "";
+    if($data['jml']>=1000 && $data['jml'] <=10000){
+        $jum = 'Paket A';
+    }else if($data['jml']>=10000 && $data['jml']<= 25000){
+        $jum = 'Paket B';
+    }else if($data['jml']>=25000 && $data['jml']<= 50000){
+        $jum = 'Paket C';
+    }
+    ?>
     Nama : {{$data->nama}}<br>
     Nis : {{$data->nis}}<br>
+    Kelas : {{$data->kelas}}<br>
+    Jumlah : {{$data->jml}}<br>
+    Paket : <?php echo $jum?>
     <hr>
     @endforeach
 </body>

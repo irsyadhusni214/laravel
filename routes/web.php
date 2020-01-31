@@ -207,3 +207,11 @@ Route::get('pass', 'PassingController@pass');
 Route::get('pass1', 'PassingController@pass1');
 
 Route::get('pass-tabungan', 'PassingController@pass2');
+
+Route::get('pass3', 'PassingController@pass3');
+
+
+//game
+Route::get('game', 'GameController@index');
+
+Route::get('game/{id}', 'GameController@yeah');
